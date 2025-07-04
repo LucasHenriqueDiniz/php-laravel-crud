@@ -1,6 +1,12 @@
-version: "3.8"
-
 services:
+  setup:
+    build:
+      context: ./setup
+    volumes:
+      - ./src:/var/www/html
+    working_dir: /var/www/html
+    command: sh /entrypoint.sh
+
   app:
     image: laravelsail/php80-composer:latest
     container_name: laravel_app
